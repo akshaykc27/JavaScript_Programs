@@ -16,5 +16,5 @@
  ******************************************************************************/
 var Access=require('../utility/utility');
 const readline=require('readline-sync');
-var number=readline.questionInt("please enter Number :");
+var number=readline.questionInt("please enter a number upto which you want to print the table of 2^ :");
 Access.powerOfTwo(number);

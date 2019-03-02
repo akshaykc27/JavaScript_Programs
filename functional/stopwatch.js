@@ -17,4 +17,5 @@
 
 var watch=require('../utility/utility');
 var read=require("readline-sync");
-watch.stopwatch()
+var res=watch.stopwatch();
+console.log("the time elasped is "+res+" seconds ");

@@ -9,7 +9,6 @@
  *  @file           : coupon.js
  *  @overview       : Total random number needed to have all distinct numbers
  *  @author         : Akshay K C <akshaykc27@gmail.com>
- *  @version        : 1.0
  *  @since          : 26-feb-2019
  *
  ******************************************************************************/

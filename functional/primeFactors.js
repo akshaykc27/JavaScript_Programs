@@ -15,5 +15,5 @@
  ******************************************************************************/
 var Access=require('../utility/utility');
 var read=require("readline-sync");
-var num = read.questionInt("Enter the number");
+var num = read.questionInt("Enter the number ");
 Access.factors(num)

@@ -16,7 +16,7 @@
 
  var Access=require('../utility/utility');
  var read=require("readline-sync");
- var stake=read.questionInt("Enter the stake");
+ var stake=read.questionInt("Enter the stake ");
  var goal=read.questionInt("enter the goal ");
- var trials=read.questionInt("enter the number of trails");
+ var trials=read.questionInt("enter the number of trails ");
  Access.gambler(stake,goal,trials)

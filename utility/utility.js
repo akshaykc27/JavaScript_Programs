@@ -1,4 +1,4 @@
-//const readline=require('readline-sync');
+const read=require('readline-sync');
 
 module.exports={
 
@@ -46,7 +46,7 @@ the value of two's power i.e., 2^N value.
     powerOfTwo(number) {
 		
 		
-		if(number<31)
+		if(number<=31)
 		{
 		 for(let i=0;i<=number;i++)
 		 {
@@ -55,7 +55,7 @@ the value of two's power i.e., 2^N value.
          }
         }
         else
-         console.log("You are entered grearthan 31 so overflows..")
+         console.log("You have entered a number greater than 31. Please enter a number less than 31")
 		
     },
 
@@ -82,7 +82,7 @@ leapYear(year)
 
     }
     else
-    console.log("enter a 4 digit year");
+    console.log("Please enter a 4 digit year");
 },
 
 /* 5. Harmonic Number 
@@ -161,10 +161,13 @@ gambler(stake,goal,trials)
         }
         if(cash==goal) wins++;
     }    
-        
+        var winP=wins*100/trials;
+        var lossP=100-winP;
         console.log(wins+"wins of "+trials);
         console.log("number of bets made = "+bets);
-        console.log("win percentage="+wins*100/trials) 
+        console.log("win percentage="+winP+"%");
+        console.log("loss percentage = "+lossP+"%");
+
 },
 
 
@@ -208,7 +211,6 @@ coupon(num)
 
 twoDarray(m,n,arr)
 {
-    var read=require("readline-sync");
     for(let i=0;i<m;i++)
     {
         arr.push([]);
@@ -242,9 +244,9 @@ printArray(arr)
 *                
 */
 
-arrayCall(arr)
+arrayCall()
 {
-    var read=require("readline-sync");
+    var arr=[];
     var size=read.question("Enter the number of elements");
     console.log(" Enter the elements ")
     for(let i=0;i<size;i++)
@@ -255,24 +257,65 @@ arrayCall(arr)
 
 },
 
-sumOfThree(res)
+sumOfThree(arr)
 {
-    var count=0;
-    for(let i=0;i<res.length-2;i++)
+    console.log(arr);
+
+    for (let i=0; i<arr.length-2;i++) 
     {
-        for(let j=i+1;j<res.length-1;j++)
+        for (let j =i+1;j<arr.length-1;j++) 
         {
-            for(k=j+1;k<res.length;k++)
+            for (let k =j+1;k<arr.length;k++) 
             {
-                if(res[i]+res[j]+res[k]==0) 
+                if (arr[i]+arr[j]+arr[k] == 0) 
                 {
-                    count++
-                    console.log("[ "+res[i] +"," +res[j] +","+ res[k]  +"]");
+                    console.log("your Triplets are " + arr[i] + " " + arr[j] + " " + arr[k]);
+                    return true;
                 }
             }
+
+        }
+       
+    }
+    return false;
+    
+},
+
+//********************************** Permutation of String ***************************************/
+/*12. Permutation of string
+*--------------------------
+---------------------------
+* @purpose     : A functions to return all permutation of a String 
+* @description : Checks if the arrays returned by two string functions are equal.
+*                
+*/
+
+permutationString(str)
+{
+    var arr = str.split("");
+    console.log(arr);
+    var arr1=[];
+    const c =str.length;
+    for(let i =0 ;i<arr.length;i++)
+    {
+        var str1="";
+        for(let j = i; j<c ; j++)
+        {
+
+            str1=str1+arr[j];
+            var s = str.length-str1.length;
+        }
+        if(str1.length<str.length)
+        {
+            str1 = str1+str.substring(0,s);
+        }
+        if(!arr1.includes(str1))
+        {
+            arr1.push(str1);
         }
     }
-    console.log("total count = "+count)
+    return arr1;
+
 },
 
 //************************************* Distance ***************************************/
@@ -315,13 +358,14 @@ the start and end clicks
 
 stopwatch()
 {
-    var read=require("readline-sync");
-    var start=0,stop=0;
+    var start=0,stop=0,res=0;
     var t1=read.question("press 0 to start timer"); 
-        start=this.currentSeconds();
-        var t2=read.question("press 1 to stop the timer");
-        stop=this.currentSeconds();
-         console.log("the time elasped is "+(stop-start)+" seconds ");
+    start=this.currentSeconds();
+    var t2=read.question("press 1 to stop the timer");
+    stop=this.currentSeconds();
+    res=stop-start;
+    return res;
+        
 
 
     
@@ -396,11 +440,9 @@ computerPlayer(game)
 
 userPlayer(game)
 {
-    var read=require("readline-sync");
     var flag=false;
     while(flag==false)
     {
-        console.log("enter the number of rows and columns")
         var x=read.questionInt("enter the row value (1,2,3)")-1;
         var y=read.questionInt("enter the coloumn value (1,2,3)")-1;
         if(game[x][y]=='-')
@@ -409,7 +451,10 @@ userPlayer(game)
             flag=true;
         }
         else
-        console.log("enter proper values");
+        {
+            console.log("enter proper values");
+            flag=false;
+        }
     }
     return game;
 },
@@ -432,6 +477,7 @@ check(game)
             return true;
         }
     } 
+    return false;
         var k=0;l=0;
         if(game[k][k]==game[k][k+1] && game[k+1][k+1]==game[k+2][k+2])
         {
@@ -440,7 +486,7 @@ check(game)
         }
         if(game[l][l+2]==game[l+1][l+1] && game[l+1][l+1]==game[l+2][l])
         {
-            if (game[2][0] == 'O' || game[2][0] == 'X')
+            if (game[0][0] == 'O' || game[0][0] == 'X')
             return true;
         }
         return false;
@@ -484,7 +530,7 @@ quadraticEquation(a,b,c)
 
 windChill(t,v)
 {
-    if(t<+50 && v>3 && v<120)
+    if(t<=50 && v>3 && v<120)
     {
         var result=35.74+0.6215*t+(0.4275*t-30.75)*(Math.pow(v,0.16));
         console.log("windchill is "+result);
@@ -495,4 +541,561 @@ windChill(t,v)
 },
 
 
+//*******************************End of Functional Programs ***************************************/
+
+/************************************ Anagram Detection **********************************/
+/*1.0 Anagram Detection
+*-----------------
+* @purpose : Take 2 Strings as Input such abcd and dcba and Check for Anagrams
+*
+* @description : One string is an anagram of another if the second is simply a rearrangement 
+* of the first. For example, 'heart' and 'earth' are anagrams...  
+*                
+*/
+
+isAnagram(a,b){
+    
+    var x=a.toLowerCase();
+    var y=b.toLowerCase();
+    if(x.length!=y.length){
+        return false;
+        //console.log("Given string is not Anagram.");
+    }
+    else{
+        var m=[],n=[];
+        m=x.split("");
+        n=y.split("");
+        m=m.sort();
+        n=n.sort();
+        if(m.length==n.length)
+        {
+            for(let i=0;i<m.length;i++)
+            {
+                if(m[i]!=n[i])
+                {
+                    return false;
+                }
+               
+            }      
+             return true;
+        }
+    }
+    },
+
+ /**
+ * @description:This method is used to find the Prime number between 1 to 1000.
+ * 
+ */
+
+    isPrime(n)
+    {
+         if(n==0||n==1)
+         {
+             return false;
+         }
+        
+            for(let i=2;i<=n/2;i++)
+            {
+            
+                
+                if(n%i==0)
+                return false;
+            }
+            return true;
+        
+    },
+
+
+ /**
+     * @description:This method is used to find palindrome value
+     * @param {number} n 
+     */
+
+
+isPalindrome(n) {
+    var t = n;
+
+    var rev = 0;
+    while (n != 0) {
+        var r = n % 10;
+
+        rev = rev * 10 + r;
+
+        n = Math.floor(n / 10);
+    }
+    if (rev == t) {
+        return true;
+
+    }
+    return false;
+
+},
+
+/**
+     * @description:This method is used to check whether the given string is a palindrome
+     * @param {string} str 
+     */
+
+
+palindromeString(str)
+{
+    var str1='';
+    for(i=0;i<str.length;i++)
+    {
+        str=str.charAt(i)+str;
+    }
+    if(str==str1)
+    {
+        return true;
+    }
+    else
+    return false;
+
+},
+
+ /**
+     * @description:This method is used to find prime nummber that are palindrome and anagrams.
+     *   
+     * 
+     */
+
+isAnagramPalindrome()
+{
+    var arr=[];
+    for(let i=2;i<=500;i++)
+    {
+        if(this.isPrime(i))
+        {
+            arr.push(i);
+        
+        }
+    }
+    console.log("prime numbers that are anagram within 500 are : ")
+    for(let j=0;j<arr.length;j++)
+    {
+        
+        for(let k=j+1;k<arr.length;k++)
+        {
+            
+            if(this.isAnagram(arr[j].toString(),arr[k].toString()))
+            {
+                console.log(arr[j], arr[k]);
+
+            }
+        }
+    }
+    console.log("prime numbers that are palindrome within 500 are : ")
+
+    for(l=0;l<arr.length;l++)
+    {
+        
+        if(this.isPalindrome(arr[l]))
+        {
+            console.log( arr[l] );
+        }
+    }   
+},
+
+/**
+     * @description:This method is used to find element in binary search
+     * @param {array} arr 
+     * @param {Element} ele 
+     */
+
+binarySearchNum(arr,ele)
+{
+    var l=0
+    var h=arr.length-1;
+    while(l<=h)
+    {
+        var m=math.floor(h+l/2);
+        if(arr[m]==ele)
+        {
+            return true;
+        }
+        else if(ele>arr[m])
+        {
+            l=m+1;
+        }
+        else if(ele<arr[m])
+        {
+            h=m-1;
+        }
+        else 
+        return m;
+
+    }
+    return -1;
+},
+
+/* @description:This method is used to find  element in binary search in String
+     * @param {Array} arr 
+     * @param {Element} ele 
+     */
+
+binarySearchString(arr,ele)
+{
+    l=0;
+    h=arr.length-1;
+    while(l<h)
+    {
+        var m=l+h/2;
+        if(arr[m]==ele)
+        {
+            return true;
+        }
+        else if(ele>arr[m])
+        {
+            l=m+1;
+        }
+        else if(ele<arr[m])
+        {
+            h=m-1;
+
+        }
+        else
+        return false;
+    }
+    return -1;
+
+},
+
+/**
+    * @description:This method is used to sort the array in insertionSort
+    * @param {array} arr 
+    */
+
+insertionSort(arr)
+{
+        var a;
+        for(let i=0;i<arr.length;i++)
+        {
+            for(let j=i+1;j>0;j--)
+            {
+                if(arr[j-1]>arr[j])
+                {
+                    a=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=a;
+                }
+            }
+        }
+        return arr;
+    
+
+
+},
+
+ /**
+    * @description:This method is used to sort the array in BubbleSort
+    * @param {array} arr 
+    */
+bubbleSort(arr) 
+{
+
+    for (let i = 0; i < arr.length; i++)
+    {
+        for (let j = i + 1; j < arr.length; j++) 
+        {
+                if (arr[i] > arr[j]) 
+                {
+                    var temp;
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+        }
+    }
+
+    return arr;
+},
+
+/**
+     * @description:This method is used to find the guessed number
+     * @param {range} left 
+     * @param {Range} right 
+     */
+
+findNumber(low,high)
+{
+    var mid = low + Math.floor((high - low)/2);
+    if (low<high)
+    {
+        if(low==high-1)
+        {
+            var c;
+            c = read.question("Is the number "+low +" if yes, press 'Y'. Else Press 'N' : ")
+            if(c=='y')
+            return low;
+            if(c=='n')
+            return high;
+        }
+        c = read.question("Is the number between " +mid+"&"+high+" if yes, press 'y'. Else Press 'n' : ")
+        if(c=='y')
+        mid = this.findNumber(mid, high, read)
+        if(c=='n')
+        mid = this.findNumber(low, mid-1, read)
+    }
+    return mid;
+},
+
+ /**
+     * @description:This method is used to find the minimum notes
+     * @param {amount} c
+     * @param {array} arr
+     */
+
+vendingMachine(c,arr)
+{   
+    var notes=0
+    for(let i=0;i<arr.length;i++)
+    {
+        if(c/arr[i]>=1)
+        {
+            var a=Math.floor(c/arr[i]);
+            notes=notes+a;
+            console.log(arr[i] +" : notes dispatched " + a);
+            c=c%arr[i];
+        }
+
+    }
+},
+
+/**
+     * @description:This method is used for converting Celsius to Fahrenheit and
+    Fahrenheit to Celsius.
+    * @param {choice} choice
+    * @param {temperature} temp
+     */
+
+temperatureConversion(choice,temp)
+{
+    if(choice==0)
+    {
+        var celsius=(temp-32)*(5/9);
+        console.log(temp+"F = " + celsius +"C");
+    }
+    else if(choice==1)
+    {
+        var f=(temp*(9/5)+32);
+        console.log(temp+"C = " + f +"F");
+
+    }
+    else
+    console.log("enter an choice from the given options");
+
+},
+
+ /**
+     * @description :This method is used to  find the monthly payment...
+     */
+
+monthlyPayment(p,r,y)
+{
+    var n=12*y;
+    var m=r/(12*100);
+    var payment = p*m/1-Math.pow(1+m,(-n));
+    console.log("the payment to be made is "+payment)
+},
+
+
+/**
+     * @description :this method is used to get squre root of non negative value.
+     * @param {number} c 
+     */
+
+squareRoot(c)
+{
+    if(c>0)
+    {
+        var t=c;
+        var e=1e-15;
+        while(Math.abs(t-c/t)>e*t)
+        {
+            t=(t+c/t)/2;
+
+        }
+        console.log("the square root of "+c+" is "+ t);
+
+    }
+    else
+    {
+        console.log("enter a valid number");
+    }
+},
+
+ /**
+     * @description:This method is used to find day of the passed value.
+     * @param {day} d 
+     * @param {month} m 
+     * @param {year} y 
+     */
+
+dayOfWeek(d,m,y)
+{
+
+        var y0=y-Math.floor((14-m)/12);
+        var x=y0+Math.floor((y0/4))-Math.floor(y0/100)+Math.floor(y0/400);
+        m0=m+12*Math.floor((14-m)/12)-2;
+        var d0=(d+x+Math.floor((31*m0)/12))%7;
+        return d0;
+
+},
+
+/**
+     * @description: This method is used to Covert the decimal number to binary value.
+     * @param {number} n
+     */
+toBinary(n)
+{
+    var str="";
+    while(n!=0)
+    {
+        var r=n%2;
+        str=str+r;
+        n=Math.floor(n/2);
+    }
+    str = str.split(""); 
+    str = str.reverse();
+    str = str.join("");
+    console.log(str);
+    return this.padding(str);
+},
+
+padding(str)
+{
+    for(i=str.length;i<8;i++)
+    {
+        str="0"+str;
+    }
+    return str;
+
+},
+
+/**
+     * @description: This method is used to Covert the dicimal number to binary value.
+     * @param {number} n
+     */
+
+toBinary1(n)
+{
+    var str="";
+    while(n!=0)
+    {
+        var r=n%2;
+        str=str+r;
+        n=Math.floor(n/2);
+    }
+    str = str.split(""); 
+    str = str.reverse();
+    str = str.join("");
+    return this.padding(str);
+},
+
+/**
+     * @description :This method is used to swap the nibbles 
+     * @param {number } num 
+     */
+
+ nibbleSwap(num)
+ {
+     var str=this.toBinary1(num);
+     console.log(str);
+     var mid=Math.floor(str.length/2);
+    
+            var arr1=[],arr2=[];
+            for(let i=0;i<mid;i++)
+            {
+                arr1[i]=str[i];
+            }
+            var k=0;
+            for(let j=mid;j<str.length;j++)
+            {
+                arr2[k]=str[j];
+                k++;
+            }
+            console.log(arr1);
+
+            var s="";
+            for(let i=0;i<arr1.length;i++)
+            {
+                s=s+arr1[i];
+            }
+            console.log(arr2);
+
+            var s1="";
+            for(let i=0;i<arr2.length;i++)
+            {
+                s1=s1+arr2[i]
+            }
+            console.log(s);
+            console.log(s1);
+            var nib=s1+s;
+            console.log("the swapped nibble is "+nib);
+            var dec = parseInt(nib, 2);
+            return dec;
+
+    
+},
+
+/**
+     * @description :This method is used to create an array 
+     * @param {number } n
+     */
+
+createArray(n,read)
+{
+    var arr=[];
+    for(let i=0;i<n;i++)
+    {
+        arr[i]=read.questionInt("enter the array elements ");
+
+    }
+    return arr;
+},
+
+
+/**
+     * @description:This method is used to sort the array in merge sort
+     * @param {Array} arr 
+     */
+
+mergeSort(arr)
+{
+    if(arr.length==1)
+    {
+        return arr;
+    }
+    const m=Math.floor(arr.length/2);
+    const left=arr.slice(0,m);
+    const right=arr.slice(m);
+    return this.merge(this.mergeSort(left),this.mergeSort(right));
+
+},
+
+merge(left,right)
+{
+    var res=[];
+    var i=0,j=0;
+    while(i<left.length && j<right.length)
+    {
+        if(left[i]<right[j])
+        {
+            res.push(left[i]);
+            i++
+        }
+        else
+        {
+            res.push(right[j]);
+            j++;
+        }
+    }
+    return res.concat(left.slice(i)).concat(right.slice(j));
+},
+
+
 }
+
+/***************************END OF ALGORITHM PROGRAMS ******************************/
+
+ 
