@@ -16,15 +16,16 @@
  ******************************************************************************/
 
 var read=require('readline-sync')       
-function replace() {
+// function replace() {
 
-        var input = read.question("Enter the name?");
-        if (input.length > 2) {
-            console.log("Hello " + input + ", How are you?")
+        var input = read.question(" Enter the name? ");
+        if (input.length > 2) 
+        {
+
+            console.log("Hello " + input + ", How are you?");
 
         }
         else
-            console.log("User name should be greater than two letters.")
-    }
+            console.log("User name should be greater than two letters.");
 
-    replace()
+

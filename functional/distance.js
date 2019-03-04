@@ -16,7 +16,7 @@
 
 var dist=require('../utility/utility')
 var read=require("readline-sync");
-var x=read.questionInt("enter the x value");
-var y=read.questionInt("enter the value of Y");
+var x=read.questionInt("enter the x value ");
+var y=read.questionInt("enter the value of Y ");
 var res=dist.distance(x,y)
 console.log("the euclidian distance is : " + res);

@@ -23,6 +23,6 @@ console.log("Press 0 to convert Farenheit to Celsius");
 console.log("Press 1 to convert Celsius to Farenheit");
 const choice=read.questionInt();
 console.log("enter the temperature");
-var temp=read.question();
+var temp=read.questionInt();
 conv.temperatureConversion(choice,temp);
 

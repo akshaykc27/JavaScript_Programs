@@ -247,11 +247,11 @@ printArray(arr)
 arrayCall()
 {
     var arr=[];
-    var size=read.question("Enter the number of elements");
+    var size=read.questionInt("Enter the number of elements");
     console.log(" Enter the elements ")
     for(let i=0;i<size;i++)
     {
-        arr[i]=read.question(" ")
+        arr[i]=read.questionInt(" ")
     }
     return arr;
 
@@ -337,7 +337,7 @@ distance(x,y)
 },
 
 /*
-* @description: return the time in seconds from 1970.
+* @description: return the time in seconds.
 */
 
 currentSeconds()
@@ -359,15 +359,12 @@ the start and end clicks
 stopwatch()
 {
     var start=0,stop=0,res=0;
-    var t1=read.question("press 0 to start timer"); 
+    var t1=read.questionInt("press 0 to start timer"); 
     start=this.currentSeconds();
-    var t2=read.question("press 1 to stop the timer");
+    var t2=read.questionInt("press 1 to stop the timer");
     stop=this.currentSeconds();
     res=stop-start;
-    return res;
-        
-
-
+    return res; 
     
 },
 
@@ -401,7 +398,7 @@ initializeGame()
 random()
 {
     var value=Math.floor(Math.random()*3);
-    console.log(value+1);
+    //console.log(value+1);
     return value;
 },
 
@@ -477,7 +474,6 @@ check(game)
             return true;
         }
     } 
-    return false;
         var k=0;l=0;
         if(game[k][k]==game[k][k+1] && game[k+1][k+1]==game[k+2][k+2])
         {
@@ -543,6 +539,9 @@ windChill(t,v)
 
 //*******************************End of Functional Programs ***************************************/
 
+
+/*********************************** Algorithm Programs ************************************/
+
 /************************************ Anagram Detection **********************************/
 /*1.0 Anagram Detection
 *-----------------
@@ -589,19 +588,18 @@ isAnagram(a,b){
 
     isPrime(n)
     {
-         if(n==0||n==1)
-         {
-             return false;
-         }
-        
-            for(let i=2;i<=n/2;i++)
-            {
-            
-                
-                if(n%i==0)
-                return false;
-            }
-            return true;
+        if(n==0||n==1)
+        {
+            return false;
+        }
+
+        for(let i=2;i<=n/2;i++)
+        {    
+            if(n%i==0)
+            return false;
+        }
+        return true;
+
         
     },
 
@@ -642,8 +640,9 @@ palindromeString(str)
     var str1='';
     for(i=0;i<str.length;i++)
     {
-        str=str.charAt(i)+str;
+        str1=str.charAt(i)+str1;
     }
+
     if(str==str1)
     {
         return true;
@@ -686,7 +685,7 @@ isAnagramPalindrome()
     }
     console.log("prime numbers that are palindrome within 500 are : ")
 
-    for(l=0;l<arr.length;l++)
+    for(let l=0;l<arr.length;l++)
     {
         
         if(this.isPalindrome(arr[l]))
@@ -818,7 +817,7 @@ bubbleSort(arr)
 
 findNumber(low,high)
 {
-    var mid = low + Math.floor((high - low)/2);
+    var mid = low + Math.floor((high - low)/2); //adding low because the number may not start from 0 
     if (low<high)
     {
         if(low==high-1)
@@ -832,9 +831,9 @@ findNumber(low,high)
         }
         c = read.question("Is the number between " +mid+"&"+high+" if yes, press 'y'. Else Press 'n' : ")
         if(c=='y')
-        mid = this.findNumber(mid, high, read)
+        mid = this.findNumber(mid, high)
         if(c=='n')
-        mid = this.findNumber(low, mid-1, read)
+        mid = this.findNumber(low, mid-1)
     }
     return mid;
 },
@@ -933,13 +932,11 @@ squareRoot(c)
 
 dayOfWeek(d,m,y)
 {
-
         var y0=y-Math.floor((14-m)/12);
         var x=y0+Math.floor((y0/4))-Math.floor(y0/100)+Math.floor(y0/400);
         m0=m+12*Math.floor((14-m)/12)-2;
         var d0=(d+x+Math.floor((31*m0)/12))%7;
         return d0;
-
 },
 
 /**
@@ -997,6 +994,22 @@ toBinary1(n)
      * @param {number } num 
      */
 
+isPowerOf2(num)
+{
+
+        if(num==0)
+        return false;
+        while(num!=1)
+        {
+            if(num%2!=0)
+            return false;
+            num=num/2;
+
+        }
+        return true;
+},
+
+
  nibbleSwap(num)
  {
      var str=this.toBinary1(num);
@@ -1012,7 +1025,7 @@ toBinary1(n)
             for(let j=mid;j<str.length;j++)
             {
                 arr2[k]=str[j];
-                k++;
+                k++
             }
             console.log(arr1);
 
@@ -1033,7 +1046,13 @@ toBinary1(n)
             var nib=s1+s;
             console.log("the swapped nibble is "+nib);
             var dec = parseInt(nib, 2);
-            return dec;
+            console.log("the new decimal number is "+dec);
+            var x=this.isPowerOf2(dec)
+            if(x)
+            console.log(dec+" is a power of two");
+            else
+            console.log(dec+" is not a power of two");
+
 
     
 },

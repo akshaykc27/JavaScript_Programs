@@ -18,5 +18,4 @@
 var nib=require('../utility/utility');
 var read=require("readline-sync");
 var num=read.questionInt("enter the number in decimal format ");
-var sum=nib.nibbleSwap(num);
-console.log(sum);
+nib.nibbleSwap(num);
