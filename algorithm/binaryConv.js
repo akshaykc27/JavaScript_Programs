@@ -16,5 +16,5 @@
 var conv=require('../utility/utility');
 var read=require("readline-sync");
 var num=read.questionInt("enter the decimal number");
-var b=conv.toBinary(num);
+var b=conv.toBinary1(num);
 console.log("the binary of "+num+" is " + b);

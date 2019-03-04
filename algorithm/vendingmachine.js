@@ -20,6 +20,6 @@
 
 var ven=require('../utility/utility');
 var read=require("readline-sync");
-var change=read.questionInt("enter the change to be given");
+var change=read.questionInt("enter the change to be given ");
 var arr=[1000,500,100,50,10,5,2,1]
 ven.vendingMachine(change,arr);

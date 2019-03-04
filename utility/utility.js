@@ -428,7 +428,7 @@ computerPlayer(game)
         var y=this.random();
         if(game[x][y]=='-')
         {
-            arr=this.mark(game,x,y,'O');
+            game=this.mark(game,x,y,'O');
             flag=true;
         }
     }
@@ -440,11 +440,11 @@ userPlayer(game)
     var flag=false;
     while(flag==false)
     {
-        var x=read.questionInt("enter the row value (1,2,3)")-1;
-        var y=read.questionInt("enter the coloumn value (1,2,3)")-1;
+        var x=read.questionInt("enter the row value (1,2,3) ")-1;
+        var y=read.questionInt("enter the coloumn value (1,2,3) ")-1;
         if(game[x][y]=='-')
         {
-            this.mark(game,x,y,'X')
+            game=this.mark(game,x,y,'X')
             flag=true;
         }
         else
@@ -847,14 +847,13 @@ findNumber(low,high)
 
 vendingMachine(c,arr)
 {   
-    var notes=0
+    
     for(let i=0;i<arr.length;i++)
     {
         if(c/arr[i]>=1)
         {
-            var a=Math.floor(c/arr[i]);
-            notes=notes+a;
-            console.log(arr[i] +" : notes dispatched " + a);
+            var notes=Math.floor(c/arr[i]);
+            console.log(arr[i] +" : notes dispatched " + notes);
             c=c%arr[i];
         }
 
@@ -944,21 +943,6 @@ dayOfWeek(d,m,y)
      * @description: This method is used to Covert the decimal number to binary value.
      * @param {number} n
      */
-toBinary(n)
-{
-    var str="";
-    while(n!=0)
-    {
-        var r=n%2;
-        str=str+r;
-        n=Math.floor(n/2);
-    }
-    str = str.split(""); 
-    str = str.reverse();
-    str = str.join("");
-    console.log(str);
-    return this.padding(str);
-},
 
 padding(str)
 {
@@ -981,12 +965,12 @@ toBinary1(n)
     while(n!=0)
     {
         var r=n%2;
-        str=str+r;
+        str=r+str;
         n=Math.floor(n/2);
     }
-    str = str.split(""); 
-    str = str.reverse();
-    str = str.join("");
+    // str = str.split(""); 
+    // str = str.reverse();
+    // str = str.join("");
     return this.padding(str);
 },
 
@@ -1015,38 +999,40 @@ isPowerOf2(num)
  {
      var str=this.toBinary1(num);
      console.log(str);
-     var mid=Math.floor(str.length/2);
+     var swappedNumber=str.substring(str.length,str.length/2)+str.substring(0,str.length/2);
+     console.log(swappedNumber);
+    //  var mid=Math.floor(str.length/2);
     
-            var arr1=[],arr2=[];
-            for(let i=0;i<mid;i++)
-            {
-                arr1[i]=str[i];
-            }
-            var k=0;
-            for(let j=mid;j<str.length;j++)
-            {
-                arr2[k]=str[j];
-                k++
-            }
-            console.log(arr1);
+    //         var arr1=[],arr2=[];
+    //         for(let i=0;i<mid;i++)
+    //         {
+    //             arr1[i]=str[i];
+    //         }
+    //         var k=0;
+    //         for(let j=mid;j<str.length;j++)
+    //         {
+    //             arr2[k]=str[j];
+    //             k++
+    //         }
+    //         console.log(arr1);
 
-            var s="";
-            for(let i=0;i<arr1.length;i++)
-            {
-                s=s+arr1[i];
-            }
-            console.log(arr2);
+    //         var s="";
+    //         for(let i=0;i<arr1.length;i++)
+    //         {
+    //             s=s+arr1[i];
+    //         }
+    //         console.log(arr2);
 
-            var s1="";
-            for(let i=0;i<arr2.length;i++)
-            {
-                s1=s1+arr2[i]
-            }
-            console.log(s);
-            console.log(s1);
-            var nib=s1+s;
-            console.log("the swapped nibble is "+nib);
-            var dec = parseInt(nib, 2);
+    //         var s1="";
+    //         for(let i=0;i<arr2.length;i++)
+    //         {
+    //             s1=s1+arr2[i]
+    //         }
+    //         console.log(s);
+    //         console.log(s1);
+    //        var nib=s1+s;
+            console.log("the swapped nibble is "+swappedNumber);
+            var dec = parseInt(swappedNumber, 2);
             console.log("the new decimal number is "+dec);
             var x=this.isPowerOf2(dec)
             if(x)
@@ -1063,7 +1049,7 @@ isPowerOf2(num)
      * @param {number } n
      */
 
-createArray(n,read)
+createArray(n)
 {
     var arr=[];
     for(let i=0;i<n;i++)

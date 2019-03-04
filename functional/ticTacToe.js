@@ -23,14 +23,14 @@ var flag=false;
 var arr=Access.initializeGame();
 console.log("Player 1: Computer , Symbol O");
 console.log("Player 2: User , Symbol X");
-var count=0;
+var count=1;
 while(count<=9)
 {   
     arr=Access.computerPlayer(arr)
     count++;
-    while(flag>4)
+    while(count>4)
     {
-        Access.check(arr)
+        flag=Access.check(arr)
         break;
     }
     if(flag)
@@ -46,19 +46,17 @@ while(count<=9)
     }
 
     arr=Access.userPlayer(arr)
+    while(count>4)
     {
-        while(flag>4)
-        {
-            Access.check(arr);
+        flag=Access.check(arr);
 
-        }
-        if(flag)
-        {
-            console.log("YESSSS!!! YOU WON ...");
-            break;
-        }
-        count++
     }
+    if(flag)
+    {
+        console.log("YESSSS!!! YOU WON ...");
+        break;
+    }
+       count++;
 }
 console.log("GAME ENDS");
 }
