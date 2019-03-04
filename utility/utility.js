@@ -398,13 +398,13 @@ initializeGame()
 random()
 {
     var value=Math.floor(Math.random()*3);
-    //console.log(value+1);
+    console.log(value+1);
     return value;
 },
 
 mark(game,x,y,value)
 {
-    if(game[x][y]='-')
+    if(game[x][y]=='-')
     game[x][y]=value;
     for(let i=0;i<=2;i++)
     {
@@ -450,7 +450,8 @@ userPlayer(game)
         else
         {
             console.log("enter proper values");
-            flag=false;
+            return false;
+            
         }
     }
     return game;
@@ -467,7 +468,7 @@ check(game)
             return true;
         }
 
-        if(game[0][i]==game[1][i] && game[1][i]==game[i][2])
+        if(game[0][i]==game[1][i] && game[1][i]==game[2][i])
         {
             if (game[0][i] == 'O' || game[0][i] == 'X') 
 
@@ -475,14 +476,14 @@ check(game)
         }
     } 
         var k=0;l=0;
-        if(game[k][k]==game[k][k+1] && game[k+1][k+1]==game[k+2][k+2])
+        if(game[k][k]==game[k+1][k+1] && game[k+1][k+1]==game[k+2][k+2])
         {
             if (game[0][0] == 'O' || game[0][0] == 'X') 
             return true;
         }
         if(game[l][l+2]==game[l+1][l+1] && game[l+1][l+1]==game[l+2][l])
         {
-            if (game[0][0] == 'O' || game[0][0] == 'X')
+            if (game[2][0] == 'O' || game[2][0] == 'X')
             return true;
         }
         return false;
