@@ -290,35 +290,41 @@ sumOfThree(arr)
 *                
 */
 
-permutationString(str)
-{
-    var arr = str.split("");
-    console.log(arr);
-    var arr1=[];
-    const c =str.length;
-    for(let i =0 ;i<arr.length;i++)
-    {
-        var str1="";
-        for(let j = i; j<c ; j++)
-        {
-
-            str1=str1+arr[j];
-            var s = str.length-str1.length;
-        }
-        if(str1.length<str.length)
-        {
-            str1 = str1+str.substring(0,s);
-        }
-        if(!arr1.includes(str1))
-        {
-            arr1.push(str1);
-        }
+permutationString(string) {
+    var results = [];
+    console.log("Now a String:" + string)
+    console.log("String length:" + string.length)
+    
+    
+    if (string.length === 1) {
+    results.push(string);
+    return results;
     }
-    return arr1;
+    
+    for (var i = 0; i < string.length; i++) {
+    var firstChar = string[i];
+    console.log("Now First char:" + firstChar)
+    var otherChar = string.substring(0, i) + string.substring(i + 1);
+    console.log("now other char:" + otherChar)
+    var otherPermutations = this.permutationString(otherChar);
+    
+    for (var j = 0; j < otherPermutations.length; j++) {
+    results.push(firstChar + otherPermutations[j]);
+    console.log("char in array:" + results)
+    }
+    }
+    return results;
+    
+    
+    
+    
+    },
 
-},
+    
+    
 
-//************************************* Distance ***************************************/
+
+   //************************************* Distance ***************************************/
 /*11. Distance
 *-------------
 * @purpose : A program with cubic running time. Read in N integers and counts the 
