@@ -17,10 +17,11 @@
  *
  ******************************************************************************/
 
-var Access= require('../utility/utility');
-var read=require("readline-sync");
-var m=read.questionInt("enter the number of rows");
-var n=read.questionInt("enter the number of coloumns");
-var arr=[];
-var result= Access.twoDarray(m,n,arr);
+var Access = require('../utility/utility');
+var read = require("readline-sync");
+var m = read.questionInt("enter the number of rows");
+var n = read.questionInt("enter the number of coloumns");
+var arr = [];
+var result = Access.twoDarray(m, n, arr);
+console.log(result);
 Access.printArray(result);

@@ -14,19 +14,18 @@
  *
  ******************************************************************************/
 
-var day=require('../utility/utility');
-var read=require("readline-sync");
-var d=read.questionInt("enter the date ");
-var m=read.questionInt("enter the month ");
-var y=read.questionInt("enter the year ");
-var num=day.dayOfWeek(d,m,y);
-var res=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-if(num<=res.length)
-{
-    console.log("that date falls on "+res[num]);
+var day = require('../utility/utility');
+var read = require("readline-sync");
+var d = read.questionInt("enter the date ");
+var m = read.questionInt("enter the month ");
+var y = read.questionInt("enter the year ");
+var num = day.dayOfWeek(d, m, y);
+var res = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+console.log(num)
+if (num <= res.length) {
+    console.log("that date falls on " + res[num]);
 
 }
-else
-{
+else {
     console.log("Invalid Input");
 }
