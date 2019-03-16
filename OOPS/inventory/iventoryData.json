@@ -1,0 +1,43 @@
+{
+    "Rice" : [
+        {
+            "name" : "Basmati",
+            "weight" : 5,
+            "price" : 120
+        },
+
+        {
+            "name" : "Brown rice",
+            "weight" : 3,
+            "price" : 55
+        }
+    ],
+
+    "Wheat" : [
+        {
+            "name" : "Aashirwad",
+            "weight" : 10,
+            "price" : 35
+        },
+
+        {
+            "name" : "kellogs",
+            "weight" : 6,
+            "price" : 28
+        }
+    ],
+
+    "Pulses" : [
+        {
+            "name" : "beans",
+            "weight" : 3,
+            "price" : 73.5
+        },
+
+        {
+            "name" : "peas",
+            "weight" : 4,
+            "price" : 56.5
+        }
+    ]
+}

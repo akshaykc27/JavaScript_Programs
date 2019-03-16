@@ -1,0 +1,29 @@
+{
+    "stock": [
+        {
+            "stockName": "reliance",
+            "numberOfShares": " 55",
+            "shareAmount": "19000000"
+        },
+        {
+            "stockName": "hp",
+            "numberOfShares": "45",
+            "shareAmount": "15603314"
+        },
+        {
+            "stockName": "dell",
+            "numberOfShares": "25",
+            "shareAmount": "35454241"
+        },
+        {
+            "stockName": "amazon",
+            "numberOfShares": "66",
+            "shareAmount": "3698522225"
+        },
+        {
+            "stockname": "emc",
+            "numberOfShares": 8796,
+            "shareAmount": 907897
+        }
+    ]
+}
